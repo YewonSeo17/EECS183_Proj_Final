@@ -25,14 +25,18 @@ Person::Person(string inputString) : Person() {
 }
 
 bool Person::tick(int currentTime) {
-    //TODO: Implement tick
-
-    //Returning false to prevent compilation error
+    if (currentTime % TICKS_PER_ANGER_INCREASE == 0) {
+        ++angerLevel;
+    }
+    if (angerLevel >= MAX_ANGER) {
+        return true;
+    }
     return false;
 }
 
 void Person::print(ostream &outs) {    
-    //TODO: Implement print
+    outs << 'f' << currentFloor << 't' << targetFloor << 'a' << angerLevel;
+    return;
 }
 
 //////////////////////////////////////////////////////
