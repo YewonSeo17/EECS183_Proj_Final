@@ -29,9 +29,11 @@
 using namespace std;
 
 void test_Person();
+void test_Floor();
 
 void start_tests() {
     test_Person();
+    test_Floor();
     
     return;
 }
@@ -42,4 +44,11 @@ void test_Person() {
     Person p2("77f1t9a1");
     cout << p2.getTurn() << " " << p2.getCurrentFloor() << " " << p2.getTargetFloor() << " " << p2.getAngerLevel() << endl;
 
+}
+
+void test_Floor() {
+    Person p1("0f1t9a1");
+    Floor f1;
+    f1.addPerson(p1, 3);
+    cout << f1.getHasUpRequest() << " " << f1.getHasDownRequest() << endl;
 }

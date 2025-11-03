@@ -16,23 +16,64 @@
 using namespace std;
 
 int Floor::tick(int currentTime) {
-    //TODO: Implement tick
-
-    //returning 0 to prevent compilation error
+	for (int i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
+		people[i].tick(currentTime);
+	}
     return 0;
 }
 
 void Floor::addPerson(Person newPerson, int request) {
-    //TODO: Implement addPerson
+	if (numPeople < MAX_PEOPLE_PER_FLOOR) {
+		people[numPeople] = newPerson;
+		++numPeople;
+		if (request > 0) {
+			hasUpRequest = true;
+			return;
+		}
+		hasDownRequest = true;
+	}
+	return;
 }
 
 void Floor::removePeople(const int indicesToRemove[MAX_PEOPLE_PER_FLOOR],
                          int numPeopleToRemove) {
-    //TODO: Implement removePeople
+	
+	// create a temporary array to store remaining elements
+	Person newArr[MAX_PEOPLE_PER_FLOOR];
+
+	// arrPos tracks index of newArr
+	int arrPos = 0;
+	int i;
+
+	// i goes through from first to the last index
+	for (i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
+
+		// if statement executes when i is not the index to remove
+		if (i != indicesToRemove[numPeopleToRemove]) {
+
+			// for indices to not remove, they are stored into newArr 
+			// in a squished form
+			newArr[arrPos] = people[i];
+		}
+	}
+
+	// after removing, replace people with newArr
+	// for loop is separated from the one above to avoid possible bugs
+	for (i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
+		people[i] = newArr[i];
+	}
+	resetRequests();
 }
 
 void Floor::resetRequests() {
-    //TODO: Implement resetRequests
+	for (int i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
+		if (people[i].getTargetFloor() > people[i].getCurrentFloor()) {
+			hasUpRequest = true;
+		}
+		else {
+			hasDownRequest = true;
+		}
+	}
 }
 
 //////////////////////////////////////////////////////
