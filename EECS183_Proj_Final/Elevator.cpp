@@ -24,18 +24,20 @@ void Elevator::tick(int currentTime) {
         // If the elevator is higher than its target floor,
         // it will move down a floor
         if (currentFloor > targetFloor) {
-            currentFloor--;
+            --currentFloor;
             return;
         }
         else if(currentFloor < targetFloor) {
 
             // If it's below the target floor, than it will move up a floor
-            currentFloor++;
+            ++currentFloor;
+            return;
         }
         else {
 
             // if currentFloor == targetFloor
             servicing = false;
+            return;
         }
     }
     return;
