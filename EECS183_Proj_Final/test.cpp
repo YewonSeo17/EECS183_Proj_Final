@@ -113,7 +113,19 @@ void test_Floor() {
     cout << "\nExpected f8t4a3; Actual: ";
     f1.getPersonByIndex(0).print(cout);
 
-    cout << "\nExpected 1; Actual: " << f1.getNumPeople() << endl;
+    cout << "\n\nExpected 1; Actual: " << f1.getNumPeople() << endl;
+
+    cout << "Testing tick()\n";
+
+    f1.tick(3);
+    f1.tick(5);
+    int i = 0;
+    while (i < 5) {
+        f1.tick(5);
+        i++;
+    }
+
+    cout << "\nExpected 0; Actual: " << f1.getNumPeople() << endl;
 
     return;
 }

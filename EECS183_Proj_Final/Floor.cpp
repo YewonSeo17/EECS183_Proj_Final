@@ -16,22 +16,23 @@
 using namespace std;
 
 int Floor::tick(int currentTime) {
+
 	// Initializing variable and array
 	int countExploded = 0;
 	int arrayRemove[MAX_PEOPLE_PER_FLOOR];
 
 	// Goes through all people on the floor
 	for (int i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
+
 		// Checks if they have exploded and adds them to the array
 		// of exploded people if they have
 		if (people[i].tick(currentTime)) {
 			arrayRemove[countExploded] = i;
-			countExploded++;
+			++countExploded;
 		}
+
 		// Calling the remove function with out indeces of removed people
 		removePeople(arrayRemove, countExploded);
-		
-		
 	}
     return 0;
 }
