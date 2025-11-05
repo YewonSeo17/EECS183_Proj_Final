@@ -92,7 +92,7 @@ void Floor::resetRequests() {
 			hasUpRequest = true;
 		}
 		else if (people[i].getTargetFloor() < people[i].getCurrentFloor()) {
-			hasUpRequest = false;
+			hasDownRequest = true;
 		}
 		if (hasUpRequest && hasDownRequest) {
 			break;
