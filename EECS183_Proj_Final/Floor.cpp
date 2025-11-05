@@ -95,7 +95,7 @@ void Floor::resetRequests() {
 			hasUpRequest = false;
 		}
 		if (hasUpRequest && hasDownRequest) {
-			return;
+			break;
 		}
 	}
 }
