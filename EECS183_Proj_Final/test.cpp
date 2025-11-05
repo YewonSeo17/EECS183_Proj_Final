@@ -33,6 +33,7 @@ void test_Floor();
 void test_Elevator();
 
 void start_tests() {
+    cout << "\nTesting Start!\n";
     test_Person();
     test_Elevator();
     test_Floor();
@@ -41,7 +42,7 @@ void start_tests() {
 }
 
 void test_Person() {
-    cout << "Testing Person" << endl;
+    cout << "\nTesting Person" << endl;
    
     Person p1("0f1t9a1");
     cout << p1.getTurn() << " " << p1.getCurrentFloor() << " " << p1.getTargetFloor() << " " << p1.getAngerLevel() << endl;
@@ -50,7 +51,7 @@ void test_Person() {
 
 }
 void test_Elevator() {
-    cout << "Now Testing Elevator" << endl;
+    cout << "\nNow Testing Elevator" << endl;
     cout << "Testing serviceRequest()" << endl;
     Elevator M1;
     M1.serviceRequest(5);
@@ -73,14 +74,46 @@ void test_Elevator() {
     cout << "M1.tick(3) " << "Expected 5; Actual: " << M1.getCurrentFloor() << endl;
     cout << "M1.tick(3) " << "Expected 0; Actual: " << M1.isServicing() << endl;
    
-
-
     return;
 }
 void test_Floor() {
-    cout << "Testing Floor" << endl;
+    cout << "\nTesting Floor\n";
+    cout << "Testing addPerson()\n";
     Person p1("0f1t9a1");
     Floor f1;
     f1.addPerson(p1, 3);
     cout << f1.getHasUpRequest() << " " << f1.getHasDownRequest() << endl;
+
+    cout << "Testing removePeople() and resetRequest()" << endl;
+    
+    f1.addPerson(Person("2f3t5a2"), 2);
+    f1.addPerson(Person("5f3t2a4"), -1);
+    f1.addPerson(Person("8f8t4a3"), -4);
+    
+    cout << "Expected f1t9a1; Actual: ";
+    f1.getPersonByIndex(0).print(cout);
+    
+    cout << "\nExpected f3t5a2; Actual: ";
+    f1.getPersonByIndex(1).print(cout);
+    
+    int indice_to_remove1[1] = { 0 };
+    f1.removePeople(indice_to_remove1, 1);
+    
+    cout << "\nExpected f3t5a2; Actual: ";
+    f1.getPersonByIndex(0).print(cout);
+
+    cout << "\nExpected f3t2a4; Actual: ";
+    f1.getPersonByIndex(1).print(cout);
+
+    cout << "\nExpected 3; Actual: " << f1.getNumPeople() << endl;
+
+    int indice_to_remove2[2] = { 0, 2 };
+    f1.removePeople(indice_to_remove2, 2);
+
+    cout << "\nExpected f8t4a3; Actual: ";
+    f1.getPersonByIndex(0).print(cout);
+
+    cout << "\nExpected 1; Actual: " << f1.getNumPeople() << endl;
+
+    return;
 }

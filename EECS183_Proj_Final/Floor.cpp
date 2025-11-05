@@ -57,38 +57,49 @@ void Floor::removePeople(const int indicesToRemove[MAX_PEOPLE_PER_FLOOR],
 
 	// arrPos tracks index of newArr
 	int arrPos = 0;
-	int i;
 
-	// i goes through from first to the last index
-	for (i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
 
-		// if statement executes when i is not the index to remove
-		if (i != indicesToRemove[numPeopleToRemove]) {
-
-			// for indices to not remove, they are stored into newArr 
-			// in a squished form
-			newArr[arrPos] = people[i];
+	for (int i = 0; i < numPeople; ++i) {
+		bool toRemove = false;
+		for (int j = 0; j < numPeopleToRemove; ++j) {
+			if (i == indicesToRemove[j]) { 
+				toRemove = true;
+				break; 
+			}
+		}
+		if (!toRemove) {
+			newArr[arrPos++] = people[i];
 		}
 	}
 
 	// after removing, replace people with newArr
 	// for loop is separated from the one above to avoid possible bugs
-	for (i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
+	for (int i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
 		people[i] = newArr[i];
+		if (i >= arrPos) {
+			people[i] = Person();
+		}
 	}
+	
+	// reset numPeople with the number of elements in newArr[]
+	numPeople = arrPos;
 	resetRequests();
 }
 
 void Floor::resetRequests() {
+	
+	hasUpRequest = false;
+	hasDownRequest = false;
+
 	for (int i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
-		if (people[i].getTargetFloor() == people[i].getCurrentFloor()) {
-			return;
-		}
-		else if (people[i].getTargetFloor() > people[i].getCurrentFloor()) {
+		if (people[i].getTargetFloor() > people[i].getCurrentFloor()) {
 			hasUpRequest = true;
 		}
-		else {
-			hasDownRequest = true;
+		else if (people[i].getTargetFloor() < people[i].getCurrentFloor()) {
+			hasUpRequest = false;
+		}
+		if (hasUpRequest && hasDownRequest) {
+			return;
 		}
 	}
 }
