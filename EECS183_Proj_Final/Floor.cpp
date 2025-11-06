@@ -22,7 +22,7 @@ int Floor::tick(int currentTime) {
 	int arrayRemove[MAX_PEOPLE_PER_FLOOR];
 
 	// Goes through all people on the floor
-	for (int i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
+	for (int i = 0; i < numPeople; ++i) {
 
 		// Checks if they have exploded and adds them to the array
 		// of exploded people if they have
@@ -31,10 +31,10 @@ int Floor::tick(int currentTime) {
 			++countExploded;
 		}
 
-		// Calling the remove function with out indeces of removed people
+		// Calling the remove function with out indices of removed people
 		removePeople(arrayRemove, countExploded);
 	}
-    return 0;
+    return countExploded;
 }
 
 void Floor::addPerson(Person newPerson, int request) {
@@ -88,7 +88,7 @@ void Floor::resetRequests() {
 	hasUpRequest = false;
 	hasDownRequest = false;
 
-	for (int i = 0; i < MAX_PEOPLE_PER_FLOOR; ++i) {
+	for (int i = 0; i < numPeople; ++i) {
 		if (people[i].getTargetFloor() > people[i].getCurrentFloor()) {
 			hasUpRequest = true;
 		}
@@ -99,7 +99,9 @@ void Floor::resetRequests() {
 			break;
 		}
 	}
-}
+}0
+0
+
 
 //////////////////////////////////////////////////////
 ////// DO NOT MODIFY ANY CODE BENEATH THIS LINE //////

@@ -25,20 +25,18 @@ void Elevator::tick(int currentTime) {
         // it will move down a floor
         if (currentFloor > targetFloor) {
             --currentFloor;
-            return;
         }
-        else if(currentFloor < targetFloor) {
-
+        else  {
             // If it's below the target floor, than it will move up a floor
             ++currentFloor;
-            return;
         }
-        else {
+    }
 
-            // if currentFloor == targetFloor
+    if (currentFloor == targetFloor) {
+
+            
             servicing = false;
             return;
-        }
     }
     return;
 }
