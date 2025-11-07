@@ -19,23 +19,35 @@
 using namespace std;
 
 Move::Move(string commandString) : Move() {
+
+    // for pass, save, quit
+    if (commandString.empty()) {
+        isPass = true;
+        return;
+    }
+    if (commandString == "S") {
+        isSave = true;
+        return;
+    }
+    if (commandString == "Q") {
+        isQuit = true;
+        return;
+    }
+
+    // if commandString starts with 'e'
     elevatorId = commandString[1];
 
-    if (commandString[2] == 'f') {
-        targetFloor = commandString[3];
-    }
-    else if (commandString[2] == 'p') {
+    char action = commandString[2];
+    if (action == 'p') {
         isPickup = true;
+        return;
     }
-    else if (commandString == "") {
-        isPass = true;
+    else if (action == 'f') {
+        targetFloor = commandString[3];
+        return;
     }
-    else if (commandString == "S") {
-        isSave = true;
-    }
-    else if (commandString == "Q") {
-        isQuit = true;
-    }
+
+    return;
 }
 
 bool Move::isValidMove(Elevator elevators[NUM_ELEVATORS]) const {

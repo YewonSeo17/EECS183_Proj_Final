@@ -31,12 +31,14 @@ using namespace std;
 void test_Person();
 void test_Floor();
 void test_Elevator();
+void test_Move();
 
 void start_tests() {
     cout << "\nTesting Start!\n";
     test_Person();
     test_Elevator();
     test_Floor();
+    test_Move();
     
     return;
 }
@@ -126,6 +128,28 @@ void test_Floor() {
     }
 
     cout << "\nExpected 0; Actual: " << f1.getNumPeople() << endl;
+
+    return;
+}
+
+void test_Move() {
+    cout << "\nTesting Move\n";
+    cout << "Testing non default constructor\n";
+
+    Move m0("e1f4");
+    Move m1("e1p");
+    Move m2("e2f1");
+    Move m3("");
+    Move m4("S");
+    Move m5("Q");
+
+    Elevator elevs[NUM_ELEVATORS];
+    elevs[0].setCurrentFloor(1);
+    elevs[0].serviceRequest(4);
+    elevs[1].setCurrentFloor(6);
+    elevs[1].serviceRequest(3);
+    elevs[2].setCurrentFloor(8);
+    elevs[2].serviceRequest(2);
 
     return;
 }

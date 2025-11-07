@@ -33,7 +33,6 @@ void Elevator::tick(int currentTime) {
     }
 
     if (currentFloor == targetFloor) {
-
             
             servicing = false;
             return;
