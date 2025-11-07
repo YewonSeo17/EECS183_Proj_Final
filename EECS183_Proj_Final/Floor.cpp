@@ -30,10 +30,10 @@ int Floor::tick(int currentTime) {
 			arrayRemove[countExploded] = i;
 			++countExploded;
 		}
-
-		// Calling the remove function with out indices of removed people
-		removePeople(arrayRemove, countExploded);
 	}
+
+	// Calling the remove function with out indices of removed people
+	removePeople(arrayRemove, countExploded);
     return countExploded;
 }
 
@@ -62,7 +62,10 @@ void Floor::removePeople(const int indicesToRemove[MAX_PEOPLE_PER_FLOOR],
 	for (int i = 0; i < numPeople; ++i) {
 		bool toRemove = false;
 		for (int j = 0; j < numPeopleToRemove; ++j) {
-			if (i == indicesToRemove[j]) { toRemove = true; break; }
+			if (i == indicesToRemove[j]) { 
+				toRemove = true; 
+				break; 
+			}
 		}
 		if (!toRemove) {
 			newArr[arrPos++] = people[i];
@@ -81,6 +84,7 @@ void Floor::removePeople(const int indicesToRemove[MAX_PEOPLE_PER_FLOOR],
 	// reset numPeople with the number of elements in newArr[]
 	numPeople = arrPos;
 	resetRequests();
+	return;
 }
 
 void Floor::resetRequests() {
@@ -99,6 +103,7 @@ void Floor::resetRequests() {
 			break;
 		}
 	}
+	return;
 }
 
 
