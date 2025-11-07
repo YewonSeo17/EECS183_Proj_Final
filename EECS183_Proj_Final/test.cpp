@@ -122,8 +122,11 @@ void test_Floor() {
     f1.tick(3);
     f1.tick(5);
     int i = 0;
+    cout << "\nExpected 1; Actual: " << f1.getNumPeople() << endl;
+    f1.tick(10);
+    cout << "\nExpected 1; Actual: " << f1.getNumPeople() << endl;
     while (i < 5) {
-        f1.tick(5);
+        f1.tick(15);
         i++;
     }
 
@@ -136,12 +139,13 @@ void test_Move() {
     cout << "\nTesting Move\n";
     cout << "Testing non default constructor\n";
 
-    Move m0("e1f4");
+    /*Move m0("e1f4");
     Move m1("e1p");
-    Move m2("e2f1");
+    Move m2("e5f0");
     Move m3("");
     Move m4("S");
     Move m5("Q");
+    Move m6("e9f9");
 
     Elevator elevs[NUM_ELEVATORS];
     elevs[0].setCurrentFloor(1);
@@ -151,5 +155,12 @@ void test_Move() {
     elevs[2].setCurrentFloor(8);
     elevs[2].serviceRequest(2);
 
+    cout << "Expected: 1, Actual: " << m0.isValidMove(elevs);
+    cout << "Expected: 1, Actual: " << m1.isValidMove(elevs);
+    cout << "Expected: 0, Actual: " << m2.isValidMove(elevs);
+    cout << "Expected: 1, Actual: " << m3.isValidMove(elevs);
+    cout << "Expected: 1, Actual: " << m4.isValidMove(elevs);
+    cout << "Expected: 1, Actual: " << m5.isValidMove(elevs);
+    cout << "Expected: 0, Actual: " << m6.isValidMove(elevs);*/
     return;
 }

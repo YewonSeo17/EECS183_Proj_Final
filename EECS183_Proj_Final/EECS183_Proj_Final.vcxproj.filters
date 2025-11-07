@@ -47,25 +47,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AI.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Building.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="BuildingState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Elevator.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Floor.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Move.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Person.h">
@@ -74,8 +56,26 @@
     <ClInclude Include="SatisfactionIndex.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Elevator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Floor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Utility.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Building.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
