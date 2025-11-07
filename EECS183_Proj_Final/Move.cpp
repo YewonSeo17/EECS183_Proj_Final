@@ -78,7 +78,9 @@ void Move::setPeopleToPickup(const string& pickupList, const int currentFloor,
     int target = 0;
 
     for (int i = 0; i < pickupList.length(); ++i) {
-        peopleToPickup[i] = pickupList[i];
+
+        // pickupList is a string and peopleToPickup is an int arr
+        peopleToPickup[i] = pickupList[i] - '0';
         ++numPeopleToPickup;
         totalSatisfaction += MAX_ANGER - pickupFloor.getPersonByIndex(i).getAngerLevel();
         target = pickupFloor.getPersonByIndex(i).getTargetFloor();
