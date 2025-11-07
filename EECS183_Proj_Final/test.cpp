@@ -132,6 +132,10 @@ void test_Floor() {
 
     cout << "\nExpected 0; Actual: " << f1.getNumPeople() << endl;
 
+    f1.addPerson(Person("2f3t5a2"), 2);
+    f1.addPerson(Person("2f3t5a2"), 2);
+    f1.addPerson(Person("2f3t5a2"), 2);
+
     return;
 }
 

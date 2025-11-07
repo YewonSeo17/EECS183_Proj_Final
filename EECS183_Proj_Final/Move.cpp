@@ -21,15 +21,15 @@ using namespace std;
 Move::Move(string commandString) : Move() {
 
     // for pass, save, quit
-    if (commandString.empty()) {
+    if (commandString == "") {
         isPass = true;
         return;
     }
-    if (commandString == "S") {
+    if (commandString == "S" || commandString == "s") {
         isSave = true;
         return;
     }
-    if (commandString == "Q") {
+    if (commandString == "Q" || commandString == "q") {
         isQuit = true;
         return;
     }
@@ -38,11 +38,11 @@ Move::Move(string commandString) : Move() {
     elevatorId = commandString[1];
 
     char action = commandString[2];
-    if (action == 'p') {
+    if (action == 'p' || action == 'P') {
         isPickup = true;
         return;
     }
-    else if (action == 'f') {
+    else if (action == 'f' || action == 'F') {
         targetFloor = commandString[3];
         return;
     }
