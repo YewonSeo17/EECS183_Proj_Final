@@ -19,14 +19,31 @@ void Building::spawnPerson(Person newPerson){
 }
 
 void Building::update(Move move){
-    //TODO: Implement update
+    int arr[] = {};
+    int target = 0;
+    if (move.isPickupMove()) {
+        move.copyListOfPeopleToPickup(arr);
+        target = move.getTargetFloor();
+
+    }
+    else if (!move.isPassMove() && !move.isPickupMove() && !move.isQuitMove() && !move.isSaveMove()) {
+        target = move.getTargetFloor();
+    }
+    if (move.isPassMove()) {
+    }
 }
 
 int Building::tick(Move move){
-    //TODO: Implement tick
-
-    //returning 0 to prevent compilation error
-    return 0;
+    ++time;
+    int totalExplodes = 0;
+    update(move);
+    for (int i = 0; i < NUM_ELEVATORS; ++i) {
+        elevators[i].tick(time);
+    }
+    for (int i = 0; i < NUM_FLOORS; ++i) {
+        totalExplodes += floors[i].tick(time);
+    }
+    return totalExplodes;
 }
 
 //////////////////////////////////////////////////////
