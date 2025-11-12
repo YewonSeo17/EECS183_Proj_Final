@@ -15,21 +15,30 @@
 using namespace std;
 
 void Building::spawnPerson(Person newPerson){
+    int currentFloor = newPerson.getCurrentFloor();
+    int request = newPerson.getTargetFloor() - currentFloor;
+    floors[currentFloor].addPerson(newPerson, request);
     
 }
 
 void Building::update(Move move){
-    int arr[] = {};
-    int target = 0;
-    if (move.isPickupMove()) {
+    int arr[MAX_PEOPLE_PER_FLOOR];
+    int target = move.getTargetFloor();
+    int currentFloor = 0;
+    int elevatorId = move.getElevatorId();;
+    if (move.isPassMove()) {
+        return;
+    }
+    else if (move.isPickupMove()) {
         move.copyListOfPeopleToPickup(arr);
-        target = move.getTargetFloor();
+        int numPeople = move.getNumPeopleToPickup();
+        currentFloor = elevators[elevatorId].getCurrentFloor();
+        floors[currentFloor].removePeople(arr, numPeople);
+        elevators[elevatorId].serviceRequest(target);
 
     }
     else if (!move.isPassMove() && !move.isPickupMove() && !move.isQuitMove() && !move.isSaveMove()) {
-        target = move.getTargetFloor();
-    }
-    if (move.isPassMove()) {
+        elevators[elevatorId].serviceRequest(target);
     }
 }
 
