@@ -14,6 +14,16 @@
 
 using namespace std;
 
+<<<<<<< HEAD
+void Building::spawnPerson(Person newPerson) {
+    int currentFloor = newPerson.getCurrentFloor();
+    int request = newPerson.getTargetFloor() - currentFloor;
+    floors[currentFloor].addPerson(newPerson, request);
+
+}
+
+void Building::update(Move move) {
+=======
 void Building::spawnPerson(Person newPerson){
     int currentFloor = newPerson.getCurrentFloor();
     int request = newPerson.getTargetFloor() - currentFloor;
@@ -22,6 +32,7 @@ void Building::spawnPerson(Person newPerson){
 }
 
 void Building::update(Move move){
+>>>>>>> b1b7562a54cb2aff504264d7d51f1077d09968da
     int arr[MAX_PEOPLE_PER_FLOOR];
     int target = move.getTargetFloor();
     int currentFloor = 0;
@@ -42,7 +53,7 @@ void Building::update(Move move){
     }
 }
 
-int Building::tick(Move move){
+int Building::tick(Move move) {
     ++time;
     int totalExplodes = 0;
     update(move);

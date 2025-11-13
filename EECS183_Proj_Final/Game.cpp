@@ -67,7 +67,47 @@ void Game::playGame(bool isAIModeIn, ifstream& gameFile) {
 // You *must* revise this function according to the RME and spec
 bool Game::isValidPickupList(const string& pickupList, 
                              const int pickupFloorNum) const {
-    return true;
+
+    bool noDup = true;
+    bool inRange = true;
+    bool elevCapa = (pickupList.length() <= ELEVATOR_CAPACITY);
+    bool lessWait = (pickupList.length() 
+        < building.getFloorByFloorNum(pickupFloorNum).getNumPeople());
+    bool rightDirect = true;
+
+    // check duplicates
+    for (int i = 0; i < pickupList.length() - 1; ++i) {
+        for (int j = i + 1; j <= pickupList.length(); ++j) {
+            if (pickupList[i] == pickupList[j]) {
+                noDup = false;
+            }
+        }
+    }
+
+    // check if the first person goes up or down
+    // if up, true; if down, false
+    bool direction = (building.getFloorByFloorNum(pickupFloorNum)
+        .getPersonByIndex(pickupList[0]).getTargetFloor() > pickupFloorNum);
+
+    for (int i = 0; i < pickupList.length(); ++i) {
+
+        // check if all pickupList members are in range
+        if (pickupList[i] < '0' && pickupList[i] > '9') {
+            inRange = false;
+        }
+
+        if ((building.getFloorByFloorNum(pickupFloorNum)
+            .getPersonByIndex(pickupList[i]).getTargetFloor() > pickupFloorNum) != direction) {
+            rightDirect = false;
+        }
+    }
+
+
+    if (noDup && inRange && elevCapa && lessWait && rightDirect) {
+        return true;
+    }
+
+    return false;
 }
 
 //////////////////////////////////////////////////////
