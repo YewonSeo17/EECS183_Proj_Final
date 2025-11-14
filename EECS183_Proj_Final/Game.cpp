@@ -44,9 +44,8 @@ void Game::playGame(bool isAIModeIn, ifstream& gameFile) {
      */
 
     string pIn;
-    gameFile >> pIn;
 
-    while (gameFile.good()) {
+    while (gameFile >> pIn) {
         Person p(pIn);
 
         // Determine which tick the Person will be spawned
@@ -54,7 +53,7 @@ void Game::playGame(bool isAIModeIn, ifstream& gameFile) {
 
         // until the tick of the person (p) reaches to the tick of the current round,
         // the user plays game
-        while (tickToAdd > p.tick(building.getTime())) {
+        while (tickToAdd > building.getTime()) {
 
             // print the state of the Building and check for end of game
             building.prettyPrintBuilding(cout);
@@ -67,8 +66,6 @@ void Game::playGame(bool isAIModeIn, ifstream& gameFile) {
         }
 
         building.spawnPerson(p);
-
-        gameFile >> pIn;
     }
 }
 
@@ -110,7 +107,7 @@ bool Game::isValidPickupList(const string& pickupList,
             rightDirect = false;
         }
 
-        if (pickupList[i] >= building.getFloorByFloorNum(pickupFloorNum).getNumPeople()) {
+        if (pickupList[i] <= building.getFloorByFloorNum(pickupFloorNum).getNumPeople()) {
             inRangeOfFloorPeople = false;
         }
     }
