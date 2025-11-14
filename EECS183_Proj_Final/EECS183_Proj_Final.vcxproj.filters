@@ -47,13 +47,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BuildingState.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Person.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SatisfactionIndex.h">
+    <ClInclude Include="Floor.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="AI.h">
@@ -65,45 +59,51 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Floor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Move.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Building.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildingState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SatisfactionIndex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="eveningMellowGame.in">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="game.in">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="morningNormalGame.in">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="morningPeacefulGame.in">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
     </None>
     <None Include="new.in">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="randomGame.in">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="randomShortGame.in">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="README.md">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
     </None>
     <None Include="save.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="randomGame.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="randomShortGame.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="eveningMellowGame.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="morningNormalGame.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="morningPeacefulGame.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="README.md">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

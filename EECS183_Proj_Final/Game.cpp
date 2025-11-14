@@ -63,6 +63,7 @@ void Game::playGame(bool isAIModeIn, ifstream& gameFile) {
             // get and apply the next move
             Move nextMove = getMove();
             update(nextMove);
+            building.tick(nextMove);
         }
 
         building.spawnPerson(p);
@@ -107,7 +108,7 @@ bool Game::isValidPickupList(const string& pickupList,
             rightDirect = false;
         }
 
-        if (pickupList[i] <= building.getFloorByFloorNum(pickupFloorNum).getNumPeople()) {
+        if (pickupList[i] < building.getFloorByFloorNum(pickupFloorNum).getNumPeople()) {
             inRangeOfFloorPeople = false;
         }
     }
